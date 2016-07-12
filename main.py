@@ -59,10 +59,7 @@ def upload():
     for container in conn.get_account()[1]:
         print container['name']
     file_content = open(file_name,"rb").read()
-    print "hi"
     en_contents = base64.b64encode(file_content)
-    print "hi1"
-    #en_contents=open(en_file,"rb").read()
     print "Contents:"
     print en_contents
     conn.put_object(container_name,en_file,contents=en_contents)
@@ -70,8 +67,6 @@ def upload():
    
 ### Download the file
 def download():
-
-    #gpg = gnupg.GPG(gnupghome='C:/Program Files (x86)/GNU/GnuPG')
     d_file=conn.get_object(container_name,en_file)
     file=open(tmp,'w')
     file.write(d_file[1])
